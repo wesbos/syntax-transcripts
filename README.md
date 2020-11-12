@@ -1,2 +1,0 @@
-# syntax-transcripts
-Begin app
