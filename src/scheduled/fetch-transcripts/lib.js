@@ -69,6 +69,12 @@ async function getTranscriptsForShow(showNumber) {
   if (!speech.diarization_finished) {
     return console.log(`Diarization for Show ${showNumber} is not yet finished`)
   }
+  if (!speech.rematch_finished) {
+    return console.log(`Show ${showNumber} is currently re-matching the speakers`)
+  }
+  if (!speech.realign_finished) {
+    return console.log(`Show ${showNumber} is being re-aligned.`)
+  }
 
   console.log(`Getting captions for ${showNumber} from otter.ai`)
   const res = await fetch(`https://otter.ai/forward/api/v1/download_transcript_file?userid=2928871&otid=${speech.otid}&format=srt&speaker_names=1&advanced_srt=0`, { headers: getHeaders() });
