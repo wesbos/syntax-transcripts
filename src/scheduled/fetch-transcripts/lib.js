@@ -1,5 +1,5 @@
 const fetch = require('isomorphic-fetch');
-const SPEECHES_ENDPOINT = `https://otter.ai/forward/api/v1/speeches?userid=2928871&folder=0&page_size=45&source=owned`;
+const SPEECHES_ENDPOINT = `https://otter.ai/forward/api/v1/speeches?userid=2928871&folder=0&page_size=500&source=owned`;
 const { createOctokit } = require('./github');
 const REPO = `wesbos/syntax`;
 let existingTranscripts = [];
