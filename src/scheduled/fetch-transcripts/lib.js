@@ -115,7 +115,6 @@ async function getNumbersOfShows() {
   return number;
 }
 
-
 async function checkForTranscripts() {
   const numberOfShows = await getNumbersOfShows();
   // we add one here because there is an episode 0
