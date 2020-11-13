@@ -28,19 +28,19 @@ function getHeaders() {
 
 async function getSpeeches() {
   if (speeches.length) {
-    console.log('They are cached!')
     return speeches;
   }
   const res = await fetch(SPEECHES_ENDPOINT, {
     headers: getHeaders()
   });
-  speeches = await res.json();
+  const data = await res.json();
+  speeches = data.speeches;
   return speeches;
 }
 
 
 async function findSpeech(showNumber) {
-  const { speeches } = await getSpeeches();
+  const speeches = await getSpeeches();
   const speech = speeches.find(speech => {
     // Search for a show that is like "Syntax 255" or "syntax5".
     const title = speech.title.toLowerCase().replace(' ', '');
