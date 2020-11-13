@@ -4,6 +4,7 @@ const { createOctokit } = require('./github');
 const REPO = `wesbos/syntax`;
 let existingTranscripts = [];
 let speeches = [];
+let lastFetched = 0;
 
 // https://github.com/jwalton922/ffpods-projects/blob/1fd371a3ce47fd7e54046f0672b43e1d3049d092/OtterAIUploader/src/main/java/com/ffpods/otteraiuploader/Test.java
 
@@ -27,12 +28,15 @@ function getHeaders() {
 
 
 async function getSpeeches() {
-  if (speeches.length) {
+  const timeSinceLastFetched = Date.now() - lastFetched;
+  // if there are speeches less than 1 min old
+  if (speeches.length && timeSinceLastFetched < 60000) {
     return speeches;
   }
   const res = await fetch(SPEECHES_ENDPOINT, {
     headers: getHeaders()
   });
+  lastFetched = Date.now();
   const data = await res.json();
   speeches = data.speeches;
   return speeches;
