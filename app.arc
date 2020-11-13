@@ -4,7 +4,7 @@ begin-app
 @static
 
 @scheduled
-fetch-transcripts rate(30 minutes)
+fetch-transcripts cron(0/30 * ? * MON-SUN *)
 
 @aws
 timeout 300

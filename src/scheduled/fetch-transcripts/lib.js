@@ -63,6 +63,9 @@ async function getTranscriptsForShow(showNumber) {
   if (!speech) {
     return console.log(`No show for ${showNumber} found`)
   }
+  if (!speech.upload_finished) {
+    return console.log(`Uploading for Show ${showNumber} is not yet finished`)
+  }
   if (!speech.process_finished) {
     return console.log(`Processing for Show ${showNumber} is not yet finished`)
   }
