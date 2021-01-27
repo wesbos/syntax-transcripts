@@ -1,5 +1,5 @@
 // learn more about scheduled functions here: https://arc.codes/primitives/scheduled
-const { checkForTranscripts } = require('./lib.js');
+const { checkForTranscripts } = require('@architect/shared/lib.js');
 
 exports.handler = async function scheduled (event) {
   console.log('checking to transcripts')
