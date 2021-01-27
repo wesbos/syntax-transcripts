@@ -28,6 +28,7 @@ function getHeaders() {
 
 
 async function getSpeeches() {
+  console.log('Getting Speeches')
   const timeSinceLastFetched = Date.now() - lastFetched;
   // if there are speeches less than 1 min old
   if (speeches.length && timeSinceLastFetched < 60000) {
@@ -39,6 +40,10 @@ async function getSpeeches() {
   lastFetched = Date.now();
   const data = await res.json();
   speeches = data.speeches;
+  if(data.status === 'Error') {
+    throw new Error(data.message);
+  }
+  console.log(`back with ${data} speeches`)
   return speeches;
 }
 
