@@ -1,11 +1,12 @@
-// learn more about HTTP functions here: https://arc.codes/primitives/http
-const {handler} = require('../../scheduled/fetch-transcripts/index');
+// learn more about scheduled functions here: https://arc.codes/primitives/scheduled
+const { checkForTranscripts } = require('../../scheduled/fetch-transcripts/lib');
 
-exports.handler = handler;
-
-// exports.handler = async function() {
-//   return {
-//     statusCode: 200,
-//     body: 'hey'
-//   }
-// }
+exports.handler = async function scheduled(event) {
+  console.log('checking to transcripts')
+  const res = await checkForTranscripts();
+  console.log(res)
+  return {
+    statusCode: 200,
+    body: res
+  }
+}
