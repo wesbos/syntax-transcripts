@@ -4,7 +4,7 @@ begin-app
 @static
 
 @scheduled
-fetch-transcripts rate(6 hours)
+fetch-transcripts rate(5 minutes)
 
 @aws
 timeout 300
