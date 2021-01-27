@@ -3,10 +3,10 @@ const { checkForTranscripts } = require('@architect/shared/lib');
 
 exports.handler = async function scheduled(event) {
   console.log('checking to transcripts')
-  const res = await checkForTranscripts();
-  console.log(res)
+  // const res = await checkForTranscripts();
+  console.log(checkForTranscripts)
   return {
     statusCode: 200,
-    body: res
+    body: 'hi'
   }
 }
