@@ -48,7 +48,7 @@ async function findSpeech(showNumber) {
   const speech = speeches.find(speech => {
     // Search for a show that is like "Syntax 255" or "syntax5".
     const title = speech.title.toLowerCase().replace(/\s/g, '');
-    return title.includes(`syntax${showNumber}-`);
+    return title.includes(`syntax${showNumber}-`) || title === `syntax${showNumber}`;
   });
   if (!speech) return;
   // now that we have the speech data, we have to hit another endpoint to get _all_ the data about that speech
